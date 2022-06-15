@@ -1,0 +1,12 @@
+Lin:3,6
+McKenzie:6
+Hardy:4,7
+Norman:4,6
+Bresovec:3,4
+Foxwell:2,7
+Stevenson:3,8
+Brooks:7,8
+James:3,4
+Early:2,6
+Weichbrod:1,2
+McCloskey:7,8
