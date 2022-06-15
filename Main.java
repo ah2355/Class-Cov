@@ -192,6 +192,11 @@ String p ="";
 
     for(int i =0; i<noClass.size();i++)
       {
+        if(noClass.get(i).equals(""))
+        {
+          noClass.remove(i);
+          i--;
+        }
          try {
             // Open given file in append mode by creating an
             // object of BufferedWriter class
