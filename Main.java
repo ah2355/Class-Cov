@@ -121,6 +121,7 @@ class Main {
       {
         System.out.println("Oops. Seems like this name is not in the schedule.txt Please enter a valid name: ");
         user = input.nextLine();
+        
          for(int i =0; i<schedule.size();i++)
         {
           int o = schedule.get(i).indexOf(":");
@@ -132,6 +133,7 @@ class Main {
             //Checks to see if the person needed coverage is in the noClass ArrayList which contains
             // people who can cover for the person needed
             //If the person's name needed in the coverage is present it removes it from noClass ArrayList
+            String n = "";
             for(int j =0; j<noClass.size();j++)
               {
                 int u = noClass.get(j).indexOf(":");
@@ -139,10 +141,11 @@ class Main {
                 
                 if(user.equals(s))
                 {
-                  noClass.remove(j);
+                 n = noClass.remove(j);
                   j--;
                 }
               }
+            noClass.add(0,n);
           }
         }
       }
