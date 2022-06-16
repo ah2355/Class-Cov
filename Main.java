@@ -7,23 +7,41 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 
 class Main {
-  public static void main(String[] args) {
-    ArrayList<String> noClass = new ArrayList<String>();
+  public static void main(String[] args)
+  {
+
+    Scanner us = new Scanner (System.in);
+    System.out.println("Does anyone need coverage?(Y/N)");
+    String inj = us.nextLine().toUpperCase();
+    
+    while(!inj.equals("Y")&&!inj.equals("N"))
+      {
+        System.out.println("Wrong input please enter a capital Y or N as a response");
+        inj = us.nextLine().toUpperCase();
+      }
+    if(inj.equals("N"))
+    {
+      System.out.println("Succesfully stored the data");
+    }
+        while(inj.equals("Y"))
+      {
+        ArrayList<String> noClass = new ArrayList<String>();
     ArrayList<String> schedule = new ArrayList<String>();
     ArrayList<String> gotCov = new ArrayList<String>();
-        
+
+   //TEST: See if my plan works and updatedList actually updates data from the noClass 
    try {
       FileWriter myWriter = new FileWriter("updatedList.txt");
       myWriter.write("");
       myWriter.close();
-      System.out.println("Successfully made it blank.");
     } catch (IOException e) {
       System.out.println("An error occurred.");
       e.printStackTrace();
     }
     
     //Reads the planning.txt file and adds to noClass arrayList
-    try {
+    try 
+      {
       File myObj = new File("planning.txt");
       Scanner myReader = new Scanner(myObj);
       while (myReader.hasNextLine()) {
@@ -36,7 +54,8 @@ class Main {
       e.printStackTrace();
     }
 //Reads the schedules.txt file and adds to schedule arrayList
-    try {
+    try 
+      {
       File myObj = new File("schedules.txt");
       Scanner myReader = new Scanner(myObj);
       while (myReader.hasNextLine()) {
@@ -51,6 +70,7 @@ class Main {
 
     //Let the user enter who needs the coverage
     Scanner input = new Scanner(System.in);
+    
     System.out.println("Who needs the coverage?");
     
     String user = input.nextLine();
@@ -65,7 +85,7 @@ class Main {
         String p = "";
         if(o!=-1)
         {
-         p = schedule.get(i).substring(0,o); 
+           p = schedule.get(i).substring(0,o); 
         }
         if(user.equals(p))
         {
@@ -142,9 +162,11 @@ String userP = "";
 
     System.out.println();
 
-String p ="";
+    //Adds the people who are eligible to cover for other 
+    //people in the palnning
+    String p ="";
     String al = "";
-     String data = "";
+    String data = "";
     for(int j=0;j<noClass.size();j++)
       {
         al ="";
@@ -169,15 +191,15 @@ String p ="";
                     if(p.indexOf(po.substring(k,k+1))==-1)
                     {
                       System.out.println(name + " is assigned for period " + po.substring(k,k+1));
-                  n= name;
-                  al= name;
-                  p+=po.substring(k,k+1);
-                  }                  
+                      n= name;
+                      al= name;
+                      p+=po.substring(k,k+1);
+                    }                   
+                  }
                 }
-              }
+             }
           }
-            
-       }
+        
         if(al.equals(name))
         {
          gotCov.add(noClass.remove(j));
@@ -185,29 +207,50 @@ String p ="";
         }
         
       }
+
+    //Adding people who will cover for the person requested
+    // to the noClass arrayList
       for(int i =0; i<gotCov.size();i++)
         {
           noClass.add(gotCov.get(i));
         }
-
-    for(int i =0; i<noClass.size();i++)
+//Checks to see if there is any empty String in noClass arrayList if there is it's going to remove it
+    for(int i =0;i<noClass.size();i++)
       {
         if(noClass.get(i).equals(""))
         {
           noClass.remove(i);
           i--;
         }
-         try {
+      }
+
+    try {
+      FileWriter myWriter = new FileWriter("planning.txt");
+      myWriter.write("");
+      myWriter.close();
+    } catch (IOException e) {
+      System.out.println("An error occurred.");
+      e.printStackTrace();
+    }
+    
+    //Adds data from noClass to updatedList.txt
+    for(int i =0; i<noClass.size();i++)
+      { 
+         try 
+           {
             // Open given file in append mode by creating an
             // object of BufferedWriter class
+             
             BufferedWriter out = new BufferedWriter(
-                new FileWriter("updatedList.txt", true));
+                new FileWriter("planning.txt", true));
+           String y = noClass.get(i);
+        
             // Writing on output stream
             out.write(noClass.get(i) + "\n");
             // Closing the connection
-            out.close();
+            out.close();            
         }
- 
+           
         // Catch block to handle the exceptions
         catch (IOException e) {
  
@@ -215,8 +258,22 @@ String p ="";
             System.out.println("exception occurred" + e);
         }
       }
-    System.out.println(noClass);
-    
+
+        System.out.println("Does anyone need coverage?(Y/N)");
+        inj = us.nextLine().toUpperCase();
+        
+        while(!inj.equals("Y")&&!inj.equals("N"))
+        {
+          System.out.println("Wrong input please enter a capital Y or N as a response");
+          inj = us.nextLine().toUpperCase();
+        }
+          
+      if(inj.equals("N"))
+      {
+        System.out.println("Succesfully stored the data");
+      }
+        
+    }
     
   }
     
