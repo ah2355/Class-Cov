@@ -21,7 +21,7 @@ class Main {
       }
     if(inj.equals("N"))
     {
-      System.out.println("Succesfully stored the data");
+      System.out.println("Nothing changed");
     }
         while(inj.equals("Y"))
       {
