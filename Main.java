@@ -11,19 +11,25 @@ class Main {
   {
 
     Scanner us = new Scanner (System.in);
+    //Asks the user if someone needs coverage
     System.out.println("Does anyone need coverage?");
-    String inj = us.nextLine().toUpperCase();
     
+    String inj = us.nextLine().toUpperCase();
+    //Checks the response of user
     while((!inj.equals("Y") && !inj.equals("YES")) &&(!inj.equals("N") && !inj.equals("NO")))
       {
+        //If user responded other Y,N,Yes or No it will
+        // say to input again
         System.out.println("Wrong input please enter a (Y or N) or (Yes or No) a response");
         inj = us.nextLine().toUpperCase();
       }
+    //If user inputs N or No nothing will change
     if(inj.equals("N")||inj.equals("NO"
     ))
     {
       System.out.println("Nothing changed");
     }
+    // If yes the process of who will cover will begin
         while(inj.equals("Y") || inj.equals("YES"))
       {
         ArrayList<String> noClass = new ArrayList<String>();
@@ -259,16 +265,19 @@ String userP = "";
             System.out.println("exception occurred" + e);
         }
       }
-
+        //After the end of the process, the user will
+        //be asked if they need anymore coverage
         System.out.println("Does anyone need coverage?");
         inj = us.nextLine().toUpperCase();
-        
+        //Checks the respons of the user
         while((!inj.equals("Y") && !inj.equals("YES")) &&(!inj.equals("N") && !inj.equals("NO")))
         {
+          //If the user input something other than Y,N,Yes or No the user will be asked to input a response again
           System.out.println("Wrong input please enter a (Y or N) or (Yes or No) a response");
           inj = us.nextLine().toUpperCase();
         }
-          
+        //If user inputs N or No the data will be saved
+        // If yes the coverage process will begin again
       if(inj.equals("NO"))
       {
         System.out.println("Succesfully stored the data");
