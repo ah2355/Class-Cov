@@ -11,19 +11,20 @@ class Main {
   {
 
     Scanner us = new Scanner (System.in);
-    System.out.println("Does anyone need coverage?(Y/N)");
+    System.out.println("Does anyone need coverage?");
     String inj = us.nextLine().toUpperCase();
     
-    while(!inj.equals("Y")&&!inj.equals("N"))
+    while((!inj.equals("Y") && !inj.equals("YES")) &&(!inj.equals("N") && !inj.equals("NO")))
       {
-        System.out.println("Wrong input please enter a capital Y or N as a response");
+        System.out.println("Wrong input please enter a (Y or N) or (Yes or No) a response");
         inj = us.nextLine().toUpperCase();
       }
-    if(inj.equals("N"))
+    if(inj.equals("N")||inj.equals("NO"
+    ))
     {
       System.out.println("Nothing changed");
     }
-        while(inj.equals("Y"))
+        while(inj.equals("Y") || inj.equals("YES"))
       {
         ArrayList<String> noClass = new ArrayList<String>();
     ArrayList<String> schedule = new ArrayList<String>();
@@ -259,16 +260,16 @@ String userP = "";
         }
       }
 
-        System.out.println("Does anyone need coverage?(Y/N)");
+        System.out.println("Does anyone need coverage?");
         inj = us.nextLine().toUpperCase();
         
-        while(!inj.equals("Y")&&!inj.equals("N"))
+        while((!inj.equals("Y") && !inj.equals("YES")) &&(!inj.equals("N") && !inj.equals("NO")))
         {
-          System.out.println("Wrong input please enter a capital Y or N as a response");
+          System.out.println("Wrong input please enter a (Y or N) or (Yes or No) a response");
           inj = us.nextLine().toUpperCase();
         }
           
-      if(inj.equals("N"))
+      if(inj.equals("NO"))
       {
         System.out.println("Succesfully stored the data");
       }
